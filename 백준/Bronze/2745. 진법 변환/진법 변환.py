@@ -1,6 +1,8 @@
 alpha = ['A','B','C','D','E','F','G','H','I'
     ,'J','K','L','M','N','O','P','Q','R'
     ,'S','T','U','V','W','X','Y','Z']
+# -> index + 10
+# ex) '2CA' 32진수 to 10진수 -> (2 * 32^2) + (12 * 32^1) + (10 * 32^0) 
 def to10jinsu(jinStr, jinNum):
     global alpha
     jinNum = int(jinNum)
