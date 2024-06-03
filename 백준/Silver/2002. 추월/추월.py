@@ -1,3 +1,4 @@
+# 풀이법: 인덱스를 비교
 def find_illegal_car(in_cars, out_cars):
     cnt = 0
     for car in out_cars:
@@ -10,6 +11,7 @@ def find_illegal_car(in_cars, out_cars):
 
     return cnt
 
+# 입출력
 in_cars = []
 out_cars = []
 n = int(input())
