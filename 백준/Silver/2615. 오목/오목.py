@@ -1,15 +1,24 @@
+# 입력 ----
 baduk = [list(map(int, input().split())) for _ in range(19)]
 
+# 풀이 ----
 dolsB, dolsW = [], []
 linesB, linesW = [], []
 lineDol5 = []
 
+# dolB, dolW 생성
 for i, line in enumerate(baduk):
     for j, dol in enumerate(line):
         if dol == 1:
+            # 튜플은 원소에 불변성 이 있어서 채택
             dolsB.append((i, j))
         elif dol == 2:
             dolsW.append((i, j))
+
+# 4 가지 방향 루프
+# 방향별로 첫번째, 두번째 돌 조합이 lines에 있는지 체크
+#   있으면 다음 방향 진행
+#   없으면 라인 만들기 진행
 
 def isWin(isBorW):
     global lineDol5
@@ -19,16 +28,17 @@ def isWin(isBorW):
     global linesW
     dols = dolsB if isBorW == 'B' else dolsW
     lines = linesB if isBorW == 'B' else linesW
-    way1 = (1, -1)
-    way2 = (1,  0) 
-    way3 = (1,  1) 
-    way4 = (0,  1) 
+    way1 = (1, -1) # 방향1
+    way2 = (1,  0) # 방향2
+    way3 = (1,  1) # 방향3
+    way4 = (0,  1) # 방향4
     ways = [way1, way2, way3, way4]
 
     for dol in dols:
         dol1 = (dol[0], dol[1])
         for wayIdx, way in enumerate(ways):
             dol2 = (dol[0]+way[0], dol[1]+way[1])
+            # 두 조합이 있는 라인이 있는지 체크
             isExist = False
             for line in lines:
                 isExist = (
@@ -41,8 +51,10 @@ def isWin(isBorW):
                 if isExist:
                     break
 
+            # 다음 방향 진행
             if isExist:
                 continue
+            # 라인 만들기
             else:
                 line = [dol1]
                 n = 2
@@ -64,6 +76,7 @@ def isWin(isBorW):
                     return True
     return False
 
+# 출력 ----
 isWinB = isWin('B')
 isWinW = isWin('W')
 
@@ -71,5 +84,3 @@ sortedLine = sorted(lineDol5, key=lambda x: (x[1], x[0]))
 print(1 if isWinB else (2 if isWinW else 0))
 if isWinB or isWinW:
     print(f'{sortedLine[0][0]+1} {sortedLine[0][1]+1}')
-
-
