@@ -1,14 +1,14 @@
-N, M = map(int, input().split())
-original = []
+n, m = map(int, input().split())
+matrix = []
 count = []
 
-for _ in range(N):
-    original.append(input())
+for _ in range(n):
+    matrix.append(input())
 
-boolTypeW = lambda i,j: (((i+j)%2 == 0 and original[i][j] == 'W')
-                             or ((i+j)%2 == 1 and original[i][j] == 'B'))
-for a in range(N-7):
-    for b in range(M-7):
+boolTypeW = lambda i,j: (((i+j)%2 == 0 and matrix[i][j] == 'W')
+                             or ((i+j)%2 == 1 and matrix[i][j] == 'B'))
+for a in range(n-7):
+    for b in range(m-7):
         index1 = 0
         index2 = 0
         for i in range(a, a+8):
