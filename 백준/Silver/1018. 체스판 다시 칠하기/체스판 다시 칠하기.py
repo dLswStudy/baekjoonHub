@@ -1,22 +1,22 @@
 n, m = map(int, input().split())
-matrix = []
+matrix = [list(input()) for _ in range(n)]
 count = []
-
-for _ in range(n):
-    matrix.append(input())
 
 boolTypeW = lambda i,j: (((i+j)%2 == 0 and matrix[i][j] == 'W')
                              or ((i+j)%2 == 1 and matrix[i][j] == 'B'))
+for i in range(n):
+    for j in range(m):
+        if boolTypeW(i,j):
+            matrix[i][j] = 'TW'
+        else:
+            matrix[i][j] = 'TB'
 for a in range(n-7):
     for b in range(m-7):
-        index1 = 0
-        index2 = 0
+        cntTypeW = 0
         for i in range(a, a+8):
             for j in range(b, b+8):
-                if boolTypeW(i,j):
-                    index1 += 1
-                else:
-                    index2 += 1
-        count.append(min(index1, index2))
+                if matrix[i][j] == 'TW':
+                    cntTypeW += 1
+        count.append(min(cntTypeW, 64-cntTypeW))
 
 print(min(count))
