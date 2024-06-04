@@ -4,12 +4,9 @@ count = []
 
 boolTypeW = lambda i,j: (((i+j)%2 == 0 and matrix[i][j] == 'W')
                              or ((i+j)%2 == 1 and matrix[i][j] == 'B'))
-for i in range(n):
-    for j in range(m):
-        if boolTypeW(i,j):
-            matrix[i][j] = 'TW'
-        else:
-            matrix[i][j] = 'TB'
+matrix = [
+    [('TW' if boolTypeW(i, j) else 'TB') for j in range(m)] 
+    for i in range(n)]
 for a in range(n-7):
     for b in range(m-7):
         cntTypeW = 0
