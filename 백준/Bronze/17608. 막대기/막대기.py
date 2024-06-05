@@ -1,14 +1,18 @@
 from collections import deque
+import sys
+input = sys.stdin.readline
 # 입력 ----------------------------------------------------------------
 n = int(input())
-rods = [int(input()) for _ in range(n)]
+d = deque()
+for _ in range(n):
+    d.append(int(input()))
+
 
 # 풀이 ----------------------------------------------------------------
-d = deque()
-count = 0
-standard = 0
-for i in range(n):
-    see = rods[n-1-i]
+count = 1
+standard = d.pop()
+for i in range(n-1):
+    see = d.pop()
     if see > standard:
         count += 1
         standard = see
