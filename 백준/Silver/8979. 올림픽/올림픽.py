@@ -1,25 +1,16 @@
-# 8979번 올림픽
-# 입력 ----------------------------------------------------------------
-n, k = map(int, input().split())
-infos = []
-for _ in range(n):
-    data = input().split()
-    infos.append([int(data[0]), tuple(map(int, data[1:]))])
+n, m = map(int, input().split())
+medals = [list(map(int, input().split())) for _ in range(n)]
+medals.sort(key=lambda x: (x[1], x[2], x[3]), reverse=True) 
 
-# 풀이 ----------------------------------------------------------------
-# 국가 K 정보 찾기
-infoK = []
-for info in infos:
-    if info[0] == k:
-        infoK = info
+rank = 1
+target_rank = 0
 
-# 국가번호 제거해서 메달정보 튜플만 남기기
-infos = list(set(map(lambda x:x[1], infos)))
-infoK = infoK[1]
+for i in range(n):
+    if i > 0 and (medals[i][1], medals[i][2], medals[i][3]) != (medals[i-1][1], medals[i-1][2], medals[i-1][3]):
+        rank = i + 1
 
-# 중복제거 & 정렬
-infos = sorted(infos, key=lambda x:(x[0],x[1],x[2]), reverse=True)
-rate = infos.index(infoK) + 1
+    if medals[i][0] == m:
+        target_rank = rank
+        break
 
-# 출력 ----------------------------------------------------------------
-print(rate)
+print(target_rank)
