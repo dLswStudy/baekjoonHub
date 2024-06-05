@@ -16,5 +16,3 @@ for char in word:
 
 print('It is a prime word.' 
       if isItPrimeword(wordNum) else 'It is not a prime word.')
-
-
