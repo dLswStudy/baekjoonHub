@@ -7,22 +7,12 @@ for _ in range(caseCnt):
     # 케이스 별 정보 입력 ----
     docCnt, qIdx = map(int, input().split())
     docMap = map(int, input().split())
-    docMap2 = docMap
-    docList = list(docMap)
+    docList = list(docMap) # 인덱싱용으로 중요도 내림차순 정렬 리스트 필요
     docQueue = deque(docList)
     # 케이스 리스트에 케이스 정보 추가 ----
     caseList.append((docCnt, qIdx, docList, docQueue))
 
 # 풀이 -----------------------------------------------
-# 이전사고:
-# 추적문서보다 작은 중요도의 문서는 다 지워도됨.
-# 추적문서보다 2 이상 큰 수도 카운팅만 하고 다 지워도 됨.
-# 수정된 사고
-# ==> but 덱에서 중간 원소의 접근 및 수정은 시간복잡도(n) 이다.
-#   원래 전체 순회하면서 불필요원소들을 삭제하고 시작하려했는데
-#   시간복잡도가 n이란걸 알아서 그럴필요 없어졌다.
-#   큐로 만들고 인큐, 디큐를 사용해서 전체프로세스를 동시에 처리하며 진행해야곘다.
-# 인덱싱용으로 중요도 내림차순 정렬 리스트 필요
 def chkNthTime_byCase(case):
     docCnt, qIdx, docList, docQueue = case
     qDoc = docList[qIdx] # 추적 문서 중요도
