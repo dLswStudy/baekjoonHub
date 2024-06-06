@@ -1,19 +1,11 @@
 import sys
 input = sys.stdin.readline
 
-N = int(input())
-
-SX_Dict = {}
-for _ in range(N):
+SX_Dict = {'STRAWBERRY':0, 'BANANA':0, 'LIME':0, 'PLUM':0}
+for _ in range(int(input())):
     S, X = input().split()
-    X = int(X)
-    if S not in SX_Dict:
-        SX_Dict[S] = X
-    else:
-        SX_Dict[S] += X
-
+    SX_Dict[S] += int(X)
 if 5 in SX_Dict.values():
     print('YES')
 else:
     print('NO')
-   
