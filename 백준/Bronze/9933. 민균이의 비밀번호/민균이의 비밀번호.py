@@ -1,12 +1,10 @@
-n = int(input())
-words = [input() for _ in range(n)]
+words = [input() for _ in range(int(input()))]
 hashTable = {}
 
-# ex) word(las)
+# ex) word => las, sal
 for word in words:
     if word == word[::-1] or word[::-1] in hashTable:
-        midCharIdx = len(word) // 2 # 1
-        print(f'{len(word)} {word[midCharIdx]}')
+        print(len(word), word[len(word)//2])
         break
     else:
         hashTable[word] = 1
