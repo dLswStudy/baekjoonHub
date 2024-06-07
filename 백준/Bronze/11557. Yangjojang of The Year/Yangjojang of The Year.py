@@ -1,7 +1,4 @@
-import sys
 from heapq import heappush
-
-input = sys.stdin.readline
 t = int(input())
 tCases = []
 # 케이스 별로 입력 & 힙푸시 & 정답도출
