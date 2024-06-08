@@ -2,11 +2,13 @@
 import sys
 input = sys.stdin.readline
 
-totScores = []
+winScore = 0
 n = int(input())
 for _ in range(n):
     scores = list(map(int, input().split()))
     runScores = scores[0:2]
     trickScores = sorted(scores[2:])
-    totScores.append(max(runScores)+trickScores[-1]+trickScores[-2])
-print(max(totScores))
+    totScores = max(runScores) + trickScores[-1] + trickScores[-2]
+    if totScores > winScore:
+        winScore = totScores
+print(winScore)
