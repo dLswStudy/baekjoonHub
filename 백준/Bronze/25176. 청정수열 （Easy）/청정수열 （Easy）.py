@@ -1,3 +1,2 @@
-from itertools import permutations
-n = int(input())
-print(len(list(permutations([i for i in range(n)],n))))
+import math
+print(math.factorial(int(input())))
