@@ -1,5 +1,6 @@
 from collections import defaultdict
-
+import sys
+input = sys.stdin.readline
 T = int(input())
 testCases = [(int(input()),int(input())) for _ in range(T)]
 
